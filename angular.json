@@ -25,9 +25,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+              "src/assets/css/nucleo-icons.css",
+              "src/assets/css/argon-dashboard.css"
+              
+            ],            
+            "scripts": [
+              "src/assets/js/argon-dashboard.js",
+              "src/assets/js/argon-dashboard.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -87,12 +92,24 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/argon-dashboard.css",
+              "src/assets/css/argon-dashboard.min.css",
+              "src/assets/css/nucleo-icons.css",
+              "src/assets/css/nucleo-svg.css"
+              
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/gulpfile.js",
+              "src/assets/js/argon-dashboard.js",
+              "src/assets/js/argon-dashboard.min.js"
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "75626a23-6cab-46ae-b0ed-73926defda66"
   }
 }
