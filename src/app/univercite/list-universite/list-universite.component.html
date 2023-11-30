@@ -1,0 +1,90 @@
+<div class="min-height-300 bg-primary position-absolute w-100"></div>
+
+
+
+
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 marge-a-gauche  ">
+    <div class="card mb-4">
+    <div class="card-header pb-0">
+    <h6>Table Universite</h6>
+    </div>
+    <div class="card-body px-0 pt-0 pb-2">
+    <div class="table-responsive p-0">
+    <table class="table align-items-center mb-0">
+    <thead>
+    <tr>
+    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Non de l'universite</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Address</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foyer affecte</th>
+    <th class="text-secondary opacity-7"></th>
+    <th class="text-secondary opacity-7"></th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let universite of liste">
+        
+            <th scope="row">{{universite.iduniveriste}}</th>
+            <td>{{universite.nomUniversite}}</td>
+            <td>{{universite.addresse}}</td>
+            <td>{{universite.foyer}}</td>
+            <td><button type="button" (click)="deleteUniversite($event,universite)"  class="btn btn-danger">Delete</button></td>
+        <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=" information(universite)">Update</button></td>
+          </tr>
+    </tbody>
+    </table>
+    <button type="button" class="btn btn-dark" [routerLink]="['/adduniversite']">Ajoute</button>
+  
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Update universite</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             
+    
+    <body>
+      <form #f="ngForm">
+          <div class="form-group">
+            <label for="exampleInputPassword1">nom de l'universite</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" name="nomUniversite" [(ngModel)]="universitrtoupdate.nomUniversite" #nomuniver="ngModel"  placeholder="nom"  pattern="[a-zA-Z]*" required>
+            <div *ngIf="nomuniver.invalid && (nomuniver.dirty || nomuniver.touched)">
+              <div *ngIf="nomuniver?.errors?.['pattern']" class="error-message">
+                  affiche que de l'ettre 
+            </div>
+            <div *ngIf="nomuniver?.errors?.['required']" class="error-message">
+              le champ est obligatoir 
+          </div>
+          </div>
+          </div>
+          <div class="form-group">
+              <label for="exampleInputPassword1">adresse de l'universite</label>
+              <input type="text" class="form-control" id="exampleInputPassword1"name="addresse" [(ngModel)]="universitrtoupdate.addresse" #addressuniver="ngModel" placeholder="adresse" required>
+              <div *ngIf="addressuniver.invalid && (addressuniver.dirty || addressuniver.touched)">
+                <div *ngIf="addressuniver.errors?.['required']" class="error-message">
+                    Ce champ est obligatoire.
+                </div>
+                </div>
+          </div>
+          <button  class="btn btn-primary" (click)=" updateUniversite()" [disabled]="f.invalid">update</button>
+      </form>
+      
+      </body>
+      
+              
+            </div>
+           
+          </div>
+        </div>
+      </div>
+
+   
