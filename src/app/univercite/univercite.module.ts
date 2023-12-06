@@ -5,12 +5,19 @@ import { UniverciteRoutingModule } from './univercite-routing.module';
 import { ListUniversiteComponent } from './list-universite/list-universite.component';
 import { AddUniversiteComponent } from './add-universite/add-universite.component';
 import { FormsModule } from '@angular/forms';
+import { SidebarComponent } from '../sidebar/sidebar.component';
+import { FooterComponent } from '../footer/footer.component';
+
 
 
 @NgModule({
   declarations: [
     ListUniversiteComponent,
-    AddUniversiteComponent
+    AddUniversiteComponent,
+    SidebarComponent,
+    FooterComponent
+  
+    
   ],
   imports: [
     CommonModule,
