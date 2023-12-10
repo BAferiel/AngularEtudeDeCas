@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import { Universite } from 'src/app/models/universite';
 import { HttpClient } from '@angular/common/http';
+import { Foyeraff } from '../models/foyer';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,4 +26,8 @@ export class UniversiteService {
   getUniversiteById(idUniversite:number):Observable<Universite>{
     return this._http.get<Universite>("http://localhost:8087/mon-application/getuniversitebyid/"+idUniversite);
   }
+  getFoyerNotAssigned():Observable<Foyeraff[]>{
+    return this._http.get<Foyeraff[]>("http://localhost:8087/mon-application/getfoyernotaffected");
+  }
+  
 }

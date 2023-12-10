@@ -3,7 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   
-  
+  {
+    path:'universites',
+    loadChildren:() =>
+     import('./univercite/univercite.module').then((u) => u.UniverciteModule),
+  }
 ];
 
 @NgModule({

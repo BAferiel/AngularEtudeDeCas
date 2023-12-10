@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Universite } from 'src/app/models/universite';
 import { UniversiteService} from 'src/app/service/universite.service';
 import { Router } from '@angular/router';
+import { Foyeraff } from 'src/app/models/foyer';
+
 
 @Component({
   selector: 'app-list-universite',
@@ -9,22 +11,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-universite.component.css']
 })
 export class ListUniversiteComponent {
+ 
   liste:Universite[]=[];
   universite:Universite=new Universite();
+  revenu:Foyeraff=new Foyeraff();
+  foyer:Foyeraff[]=[];
 
   universitrtoupdate:Universite={
     iduniveriste:0,
     nomUniversite:"",
     addresse:"",
-    foyer:""
+    foyer: {
+      idfoyer:0,
+      nomfoyer:"",
+      capacitierfoyer:0
+    }
   };
   constructor(private router:Router, private us1:UniversiteService){}
   ngOnInit(){
     this.fetchuniversite()
+    this.us1.getFoyerNotAssigned().subscribe((res:Foyeraff[])=>this.foyer=res);
    }
   
     fetchuniversite(){
       this.us1.getUniversiterFromDB().subscribe((res:Universite[])=>this.liste=res);
+  
     }
 
   deleteUniversite(event:any , universite:Universite){

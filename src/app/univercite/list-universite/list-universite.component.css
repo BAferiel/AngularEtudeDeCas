@@ -34,6 +34,7 @@
     transform: translateY(-50%);
     font-size: 1.2em;
   }
+  
   .ng-invalid.ng-dirty:not(.ng-valid)::after {
     content: '✖'; 
     color: red;

@@ -4,9 +4,9 @@
   <nav aria-label="breadcrumb">
   <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
   <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-  <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tables</li>
+  <li class="breadcrumb-item text-sm text-white active" aria-current="page">Universite</li>
   </ol>
-  <h6 class="font-weight-bolder text-white mb-0">Tables</h6>
+  <h6 class="font-weight-bolder text-white mb-0">Universite</h6>
   </nav>
   <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
   <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -142,7 +142,7 @@
             <th scope="row">{{universite.iduniveriste}}</th>
             <td>{{universite.nomUniversite}}</td>
             <td>{{universite.addresse}}</td>
-            <td>{{universite.foyer}}</td>
+            <td>{{universite.foyer?.idfoyer || 'N/A'}}</td>
             <td><button type="button" (click)="deleteUniversite($event,universite)"  class="btn btn-danger">Delete</button></td>
         <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)=" information(universite)">Update</button></td>
           </tr>
@@ -155,7 +155,7 @@
     </div>
     </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade"  #exampleModal tabindex="-1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -188,6 +188,16 @@
                 </div>
                 </div>
           </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Foyer affect:</label>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">id Foyer</label>
+                <select class="form-select" id="inputGroupSelect01" [(ngModel)]="revenu.idfoyer" #idfoyer="ngModel" name="foyer">
+                  <option value="1" *ngFor="let u of foyer" [value]="u.idfoyer">{{u.idfoyer}}</option>
+                  
+                </select>
+              </div>
+        </div>
           <button  class="btn btn-primary" (click)=" updateUniversite()" [disabled]="f.invalid">update</button>
       </form>
       
