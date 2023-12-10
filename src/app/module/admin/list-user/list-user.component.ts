@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../../../models/user.model';
 import { Router } from '@angular/router';
-import { UserService } from '../../../user.service';
+import { UserService } from '../../../service/user.service';
 console.log("ListUserComponent");
 
 @Component({

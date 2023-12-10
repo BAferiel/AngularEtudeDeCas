@@ -1,6 +1,6 @@
 // registration.component.ts
 import { Component } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../service/user.service';
 import { User } from 'src/app/models/user.model';
 import { Router } from '@angular/router'; // Add this import
 

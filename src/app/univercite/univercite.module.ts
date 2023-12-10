@@ -5,8 +5,8 @@ import { UniverciteRoutingModule } from './univercite-routing.module';
 import { ListUniversiteComponent } from './list-universite/list-universite.component';
 import { AddUniversiteComponent } from './add-universite/add-universite.component';
 import { FormsModule } from '@angular/forms';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { FooterComponent } from '../footer/footer.component';
+
+
 
 
 
@@ -14,15 +14,14 @@ import { FooterComponent } from '../footer/footer.component';
   declarations: [
     ListUniversiteComponent,
     AddUniversiteComponent,
-    SidebarComponent,
-    FooterComponent
   
     
   ],
   imports: [
     CommonModule,
     UniverciteRoutingModule,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class UniverciteModule { }

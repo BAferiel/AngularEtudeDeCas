@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from 'src/app/service/user.service';
 import { Router } from '@angular/router';
-import { User } from '../models/user.model';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -11,36 +11,36 @@ import { User } from '../models/user.model';
 export class ProfileComponent {
   isEditing = false;
   isLoggedIn: boolean = true;
-  user: User = new User();
+  user: User= new User();
+  idUser: any;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    this.loadUserProfile();
-  }
-
-  loadUserProfile(): void {
-    let userRoles: string[] = [];
-
-    if (this.user?.roles) {
-      // Check if it's a string, and convert it to an array if necessary
-      userRoles = typeof this.user.roles === 'string' ? [this.user.roles] : this.user.roles;
-    }
-    const isAdmin = userRoles.includes('ROLE_ADMIN');
-
-    const profileObservable = isAdmin
-      ? this.userService.getAdminProfile()
-      : this.userService.getUserProfile();
-
-    profileObservable.subscribe(
+    this.idUser = this.userService.getUser().id;
+    this.userService.getUserById(this.idUser).subscribe(
       (data) => {
-        this.user = data;
-        console.log('User profile loaded:', this.user);
+        this.user = data.data;
       },
       (error) => {
-        console.error('Error loading user profile:', error);
+        console.log(error);
       }
     );
+  }
+
+  updateProfile(){
+    this.userService.updateUser(this.user).subscribe(
+      (data) => {
+        console.log(data);
+        
+        this.ngOnInit();
+        alert("Profile updated successfully");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
   }
 
   logout() {
